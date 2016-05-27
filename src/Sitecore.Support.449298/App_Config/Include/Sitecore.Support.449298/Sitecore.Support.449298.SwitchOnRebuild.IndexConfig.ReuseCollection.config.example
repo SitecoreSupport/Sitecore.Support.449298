@@ -4,11 +4,15 @@
       <configuration type="Sitecore.ContentSearch.ContentSearchConfiguration, Sitecore.ContentSearch">
         <indexes hint="list:AddIndex">
           <!-- MASTER INDEX configuration -->
-          <!-- Replacing default SolrSearchIndex type with the one from patch 391039 which allows Sitecore to start up even if Solr connection is not available.
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
                Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
                SwitchOnRebuild index expects 4 parameters to be passed into the constructor:
-                  mainalias:          Alias name for the primary index operations. If it does not exist in Solr, it will be created and assigned automatically. It must have only one collection assigned to it.
-                  rebuildalias:       Alias name for the rebuild index operations. If it does not exist in Solr, it will be created and assigned automatically. It must have only one collection assigned to it.
+                  mainalias:          Alias name for the primary index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  rebuildalias:       Alias name for the rebuild index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
                   collection:         Primary index collection name.
                   rebuildcollection:	Rebuild index collection name.
           -->
@@ -26,11 +30,15 @@
             <param patch:after="*[@desc='collection']" desc="rebuildcollection">scitems_swap</param>
           </index>
           <!-- WEB INDEX configuration -->
-          <!-- Replacing default SolrSearchIndex type with the one from patch 391039 which allows Sitecore to start up even if Solr connection is not available.
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
                Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
                SwitchOnRebuild index expects 4 parameters to be passed into the constructor:
-                  mainalias:          Alias name for the primary index operations. If it does not exist in Solr, it will be created and assigned automatically. It must have only one collection assigned to it.
-                  rebuildalias:       Alias name for the rebuild index operations. If it does not exist in Solr, it will be created and assigned automatically. It must have only one collection assigned to it.
+                  mainalias:          Alias name for the primary index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  rebuildalias:       Alias name for the rebuild index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
                   collection:         Primary index collection name.
                   rebuildcollection:	Rebuild index collection name.
           -->
@@ -48,11 +56,15 @@
             <param patch:after="*[@desc='collection']" desc="rebuildcollection">scitems_swap</param>
           </index>
           <!-- CORE INDEX configuration -->
-          <!-- Replacing default SolrSearchIndex type with the one from patch 391039 which allows Sitecore to start up even if Solr connection is not available.
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
                Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
                SwitchOnRebuild index expects 4 parameters to be passed into the constructor:
-                  mainalias:          Alias name for the primary index operations. If it does not exist in Solr, it will be created and assigned automatically. It must have only one collection assigned to it.
-                  rebuildalias:       Alias name for the rebuild index operations. If it does not exist in Solr, it will be created and assigned automatically. It must have only one collection assigned to it.
+                  mainalias:          Alias name for the primary index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  rebuildalias:       Alias name for the rebuild index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
                   collection:         Primary index collection name.
                   rebuildcollection:	Rebuild index collection name.
           -->
