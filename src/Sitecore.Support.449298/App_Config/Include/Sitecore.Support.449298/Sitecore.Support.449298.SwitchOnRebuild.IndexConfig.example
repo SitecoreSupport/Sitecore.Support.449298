@@ -1,0 +1,97 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
+  <sitecore>
+    <contentSearch>
+      <configuration type="Sitecore.ContentSearch.ContentSearchConfiguration, Sitecore.ContentSearch">
+        <indexes hint="list:AddIndex">
+          <!-- MASTER INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 391039 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+               SwitchOnRebuild index expects 4 parameters to be passed into the constructor:
+                  mainalias:          Alias name for the primary index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  rebuildalias:       Alias name for the rebuild index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  collection:         Primary index collection name.
+                  rebuildcollection:	Rebuild index collection name.
+          -->
+          <index id="sitecore_master_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex, Sitecore.Support.449298" />
+            <param desc="core">
+              <patch:delete />
+            </param>
+            <param desc="rebuildcore">
+              <patch:delete />
+            </param>
+            <param patch:after="*[@desc='name']" desc="mainalias">scitemsMain</param>
+            <param patch:after="*[@desc='mainalias']" desc="rebuildalias">scitemsRebuild</param>
+            <param patch:after="*[@desc='rebuildalias']" desc="collection">scitems</param>
+            <param patch:after="*[@desc='collection']" desc="rebuildcollection">scitems_swap</param>
+          </index>
+          <!-- WEB INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 391039 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+               SwitchOnRebuild index expects 4 parameters to be passed into the constructor:
+                  mainalias:          Alias name for the primary index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  rebuildalias:       Alias name for the rebuild index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  collection:         Primary index collection name.
+                  rebuildcollection:	Rebuild index collection name.
+          -->
+          <index id="sitecore_web_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex, Sitecore.Support.449298" />
+            <param desc="core">
+              <patch:delete />
+            </param>
+            <param desc="rebuildcore">
+              <patch:delete />
+            </param>
+            <param patch:after="*[@desc='name']" desc="mainalias">scitemsWebMain</param>
+            <param patch:after="*[@desc='mainalias']" desc="rebuildalias">scitemsWebRebuild</param>
+            <param patch:after="*[@desc='rebuildalias']" desc="collection">scitemsweb</param>
+            <param patch:after="*[@desc='collection']" desc="rebuildcollection">scitemsweb_swap</param>
+          </index>
+          <!-- CORE INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 391039 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+               SwitchOnRebuild index expects 4 parameters to be passed into the constructor:
+                  mainalias:          Alias name for the primary index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  rebuildalias:       Alias name for the rebuild index operations. 
+                                      ContentSearch.Solr.EnforceAliasCreation setting controls whether alias should be created automatically. 
+                                      It must have only one collection assigned to it.
+                  collection:         Primary index collection name.
+                  rebuildcollection:	Rebuild index collection name.
+          -->
+          <index id="sitecore_core_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex, Sitecore.Support.449298" />
+            <param desc="core">
+              <patch:delete />
+            </param>
+            <param desc="rebuildcore">
+              <patch:delete />
+            </param>
+            <param patch:after="*[@desc='name']" desc="mainalias">scitemsCoreMain</param>
+            <param patch:after="*[@desc='mainalias']" desc="rebuildalias">scitemsCoreRebuild</param>
+            <param patch:after="*[@desc='rebuildalias']" desc="collection">scitemscore</param>
+            <param patch:after="*[@desc='collection']" desc="rebuildcollection">scitemscore_swap</param>
+          </index>
+        </indexes>
+      </configuration>
+    </contentSearch>
+    <settings>
+      <setting name="ContentSearch.Solr.ServiceBaseAddress">
+        <patch:attribute name="value">http://localhost:8983/solr</patch:attribute>
+      </setting>
+      <setting name="ContentSearch.Solr.EnableHttpCache">
+        <patch:attribute name="value">false</patch:attribute>
+      </setting>
+    </settings>
+  </sitecore>
+</configuration>

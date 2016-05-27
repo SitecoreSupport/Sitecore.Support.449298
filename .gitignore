@@ -234,3 +234,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/src/Sitecore.Support.449298/App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.Local.ReuseCollection.config
+/src/Sitecore.Support.449298/App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.Local.config.example
+/src/Sitecore.Support.449298/NuGet.Config
