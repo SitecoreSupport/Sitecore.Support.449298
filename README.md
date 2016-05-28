@@ -22,7 +22,7 @@ It depends on patch 405677.
 ## Configuration
 The patch was developed with Solr 5.2.1 and tested up to Solr 5.5.1.  
 This patch works only with SolrCloud instance configured to use `ClassicIndexSchemaFactory` which means `schema.xml` file must be used. Make sure `schemaFactory` configuration in `solrconfig.xml` file looks like this:
-```
+```XML
 <schemaFactory class="ClassicIndexSchemaFactory"/>
 ```  
 Main configuration settings for the patch can be found in `Sitecore.Support.449298.config` file. Here are the configuration settings that come with the patch:
@@ -43,8 +43,8 @@ The patch uses a scheduled task that checks whether the Solr instance up and run
 Other configuration files `Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example` and `Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example` are provide as examples how to configure SwitchOnRebuild Solr index. Explore these files to understand index configuration changes that need to be implemented to patch index definitions. 
 
 ## Content
-The patch includes the following files:
-1. `bin/Sitecore.Support.449298.dll`
-2. `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.config`
-3. `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example`
-4. `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example`
+The patch includes the following files:  
+- `bin/Sitecore.Support.449298.dll`
+- `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.config`
+- `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example`
+- `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example`
