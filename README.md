@@ -16,7 +16,7 @@ There are a few options that one can use to secure Solr admin interfaces:
 
 ## Dependencies
 Sitecore Solr integration uses SolrNet assembly to work with Solr instance. This patch requires an IoC container that injects proper implementations for SolrNet interfaces. 
-It depends on patch 405677.
+It depends on patch [Sitecore.Support.405677](https://github.com/SitecoreSupport/Sitecore.Support.405677).
 > This patch does not work without one of IoC container integrations implemented by 405677.
 
 ## Configuration
