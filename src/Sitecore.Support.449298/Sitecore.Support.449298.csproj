@@ -88,9 +88,14 @@
   <ItemGroup>
     <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example" />
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example" />
+    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
