@@ -1,14 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Support.449298", "Sitecore.Support.449298.csproj", "{6BFD4ED1-332F-4AD2-961A-E1D62D311A33}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{69629A3F-A2A1-444E-99F4-405CD5C31B1C}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\README.md = ..\..\README.md
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Support.449298", "Sitecore.Support.449298\Sitecore.Support.449298.csproj", "{6BFD4ED1-332F-4AD2-961A-E1D62D311A33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
