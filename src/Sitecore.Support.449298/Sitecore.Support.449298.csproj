@@ -36,24 +36,25 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\SC.Newtonsoft.Json.8.1.0.151207\lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\SC.Newtonsoft.Json.8.1.1\lib\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SC.Sitecore.ContentSearch.8.1.0.151207\lib\Sitecore.ContentSearch.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\SC.Sitecore.ContentSearch.8.1.1\lib\Sitecore.ContentSearch.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch.Linq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SC.Sitecore.ContentSearch.Linq.8.1.0.151207\lib\Sitecore.ContentSearch.Linq.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\SC.Sitecore.ContentSearch.Linq.8.1.1\lib\Sitecore.ContentSearch.Linq.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch.SolrProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SC.Sitecore.ContentSearch.SolrProvider.8.1.0.151207\lib\Sitecore.ContentSearch.SolrProvider.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SC.Sitecore.Kernel.8.1.0.151207\lib\Sitecore.Kernel.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\SC.Sitecore.Kernel.8.1.1\lib\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SolrNet, Version=0.4.0.2002, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SC.SolrNet.8.1.0.151207\lib\SolrNet.dll</HintPath>
