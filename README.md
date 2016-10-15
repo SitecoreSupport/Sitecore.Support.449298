@@ -48,3 +48,11 @@ The patch includes the following files:
 - `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.config`
 - `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example`
 - `App_Config/Include/Sitecore.Support.449298/Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example`
+
+## License
+
+This patch is licensed under the [Sitecore Corporation A/S License](LICENSE).
+
+## Download
+
+Downloads are available via [GitHub Releases](https://github.com/SitecoreSupport/Sitecore.Support.449298/releases).
