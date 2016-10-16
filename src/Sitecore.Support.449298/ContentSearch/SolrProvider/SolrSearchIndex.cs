@@ -16,10 +16,12 @@ namespace Sitecore.Support.ContentSearch.SolrProvider
         {
         }
 
+        public SolrSearchIndex(string name, string core, IIndexPropertyStore propertyStore, string group)
+            : base(name, core, propertyStore, group)
+        {
+        }
         public override void Initialize()
         {
-            if (SolrStatus.InitStatusOk)
-            {
                 try
                 {
                     base.Initialize();
@@ -28,8 +30,10 @@ namespace Sitecore.Support.ContentSearch.SolrProvider
                 }
                 catch (Exception exception)
                 {
+                Trace.Warn($"Failed to initialize '{this.Name}' index. Registering the index for re-initialization once connection to SOLR becomes available ...");
+                SolrStatus.RegisterIndexForReinitialization(this);
+                Trace.Warn("DONE");
                     Log.Error(exception.Message, exception, this);
-                }
             }
         }
     }
