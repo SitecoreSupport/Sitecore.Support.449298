@@ -1,0 +1,128 @@
+﻿<?xml version="1.0"?>
+<!--
+  This configuration file can be used to adjust default Sitecore SOLR search indexes to use 'Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex' 
+    implementation ( which can handle transient SOLR connection issues at the moment of index initialization by skipping index initialization )
+    
+  Indexes are to be re-initialized later on by the 'IsSolrAliveAgent' after the agent confirms that SOLR is back on.
+  
+  You can also add entries for your custom SOLR-driven indexes ( to make them use  'Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex' 
+    implementation )
+  
+  /!\ NOTE: If you intend to use 'SwitchOnRebuild' index implementation for SOLR indexes - then this config file needs to remain disabled.
+              Make sure to use 'SwitchOnRebuild' configuration files instead
+-->
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
+  <sitecore>
+    <contentSearch>
+      <configuration type="Sitecore.ContentSearch.ContentSearchConfiguration, Sitecore.ContentSearch">
+        <indexes hint="list:AddIndex">
+          <!-- MASTER INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_master_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- WEB INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_web_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- CORE INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_core_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- ANALYTICS INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_analytics_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE MARKETING ASSET MASTER INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_marketing_asset_index_master">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE MARKETING ASSET WEB INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_marketing_asset_index_web">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE MARKETINGDEFINITIONS MASTER INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_marketingdefinitions_master">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE MARKETINGDEFINITIONS WEB INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_marketingdefinitions_web">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE TESTING INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_testing_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE SUGGESTED TEST INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_suggested_test_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE FXM MASTER INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_fxm_master_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE FXM WEB INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_fxm_web_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE LIST INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="sitecore_list_index">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE SOCIAL MESSAGES MASTER INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="social_messages_master">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+          <!-- SITECORE SOCIAL MESSAGES WEB INDEX configuration -->
+          <!-- Replacing default SolrSearchIndex type with the one from patch 449298 which allows Sitecore to start up even if Solr connection is not available.
+               Once Solr connection comes back, the patch initiates application restart to initialize Solr index properly.
+          -->
+          <index id="social_messages_web">
+            <patch:attribute name="type" value="Sitecore.Support.ContentSearch.SolrProvider.SolrSearchIndex, Sitecore.Support.449298" />
+          </index>
+        </indexes>
+      </configuration>
+    </contentSearch>
+  </sitecore>
+</configuration>

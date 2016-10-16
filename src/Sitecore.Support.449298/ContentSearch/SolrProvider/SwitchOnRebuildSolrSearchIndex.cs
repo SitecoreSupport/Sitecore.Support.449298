@@ -21,6 +21,7 @@
     using Sitecore.Support.ContentSearch.SolrProvider.Configuration;
     using SolrNet;
     using SolrNet.Impl;
+    using Trace = Sitecore.Support.Trace;
 
     // NOTE: you must inherit your custom SwitchOnRebuildSolrSearchIndex from default Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex class
     // as SolrContentSearchManager.Cores property casts indexes to default implementations of SolrSearchIndex and SwitchOnRebuildSolrSearchIndex.
@@ -72,21 +73,21 @@
 
         private IProviderUpdateContext CreateRebuildUpdateContext(ISolrOperations<Dictionary<string, object>> solrOperations)
         {
-            ICommitPolicyExecutor commitPolicyExecutor = (ICommitPolicyExecutor)base.CommitPolicyExecutor.Clone();
+            ICommitPolicyExecutor commitPolicyExecutor = (ICommitPolicyExecutor)this.CommitPolicyExecutor.Clone();
             commitPolicyExecutor.Initialize(this);
-            IContentSearchConfigurationSettings instance = base.Locator.GetInstance<IContentSearchConfigurationSettings>();
+            IContentSearchConfigurationSettings instance = this.Locator.GetInstance<IContentSearchConfigurationSettings>();
             if (instance.IndexingBatchModeEnabled())
             {
                 return new SolrBatchUpdateContext(this, solrOperations, instance.IndexingBatchSize(), commitPolicyExecutor);
             }
-            return new SolrUpdateContext(this, solrOperations, base.CommitPolicyExecutor);
+            return new SolrUpdateContext(this, solrOperations, this.CommitPolicyExecutor);
         }
 
 #region override
 
         public override void Initialize()
         {
-            if (SolrStatus.InitStatusOk)
+            try
             {
                 // Loads ActiveCollection and RebuildCollection from the DatabasePropertyStore.
                 LoadLastPreservedCoreStates();
@@ -129,6 +130,17 @@
                 CrawlingLog.Log.Debug(
                     $"[Index={this.Name}] Created access to rebuild collection [{RebuildCollection}] via rebuild alias [{this.RebuildCore}]",
                     null);
+            }
+            catch (ProviderConfigurationException ex) {
+                // Re-throw ProviderConfigurationException ( there's no point in re-initializing index )
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Trace.Warn($"Failed to initialize '{this.Name}' index. Registering the index for re-initialization once connection to SOLR becomes available ...");
+                SolrStatus.RegisterIndexForReinitialization(this);
+                Trace.Warn("DONE");
+                Log.Error(ex.Message, ex, this);
             }
         }
 
