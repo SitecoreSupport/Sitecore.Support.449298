@@ -85,17 +85,21 @@
     <Compile Include="ContentSearch\SolrProvider\SwitchOnRebuildSolrSearchIndex.cs" />
     <Compile Include="IsSolrAliveAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trace.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.config">
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.config">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.SolrSearchIndex.config.example">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

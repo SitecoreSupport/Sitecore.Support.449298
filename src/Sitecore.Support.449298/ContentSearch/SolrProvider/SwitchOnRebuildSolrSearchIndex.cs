@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
-    using System.Linq;
-    using System.Reflection;
     using System.Threading;
     using Administration;
     using Microsoft.Practices.ServiceLocation;
@@ -21,6 +19,7 @@
     using Sitecore.Support.ContentSearch.SolrProvider.Configuration;
     using SolrNet;
     using SolrNet.Impl;
+    using Trace = Sitecore.Support.Trace;
 
     // NOTE: you must inherit your custom SwitchOnRebuildSolrSearchIndex from default Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex class
     // as SolrContentSearchManager.Cores property casts indexes to default implementations of SolrSearchIndex and SwitchOnRebuildSolrSearchIndex.
@@ -36,7 +35,7 @@
         /// Active Solr mainalias name. Previously it was set as the Core property.
         /// </summary>
         public string ActiveCollection { get; set; }
-        
+
         /// <summary>
         /// Rebuid Solr mainalias name. Previously it was set as the RebuildCollection property.
         /// </summary>
@@ -72,21 +71,21 @@
 
         private IProviderUpdateContext CreateRebuildUpdateContext(ISolrOperations<Dictionary<string, object>> solrOperations)
         {
-            ICommitPolicyExecutor commitPolicyExecutor = (ICommitPolicyExecutor)base.CommitPolicyExecutor.Clone();
+            ICommitPolicyExecutor commitPolicyExecutor = (ICommitPolicyExecutor)this.CommitPolicyExecutor.Clone();
             commitPolicyExecutor.Initialize(this);
-            IContentSearchConfigurationSettings instance = base.Locator.GetInstance<IContentSearchConfigurationSettings>();
+            IContentSearchConfigurationSettings instance = this.Locator.GetInstance<IContentSearchConfigurationSettings>();
             if (instance.IndexingBatchModeEnabled())
             {
                 return new SolrBatchUpdateContext(this, solrOperations, instance.IndexingBatchSize(), commitPolicyExecutor);
             }
-            return new SolrUpdateContext(this, solrOperations, base.CommitPolicyExecutor);
+            return new SolrUpdateContext(this, solrOperations, this.CommitPolicyExecutor);
         }
 
-#region override
+        #region override
 
         public override void Initialize()
         {
-            if (SolrStatus.InitStatusOk)
+            try
             {
                 // Loads ActiveCollection and RebuildCollection from the DatabasePropertyStore.
                 LoadLastPreservedCoreStates();
@@ -129,6 +128,18 @@
                 CrawlingLog.Log.Debug(
                     $"[Index={this.Name}] Created access to rebuild collection [{RebuildCollection}] via rebuild alias [{this.RebuildCore}]",
                     null);
+            }
+            catch (ProviderConfigurationException ex)
+            {
+                // Re-throw ProviderConfigurationException ( there's no point in re-initializing index )
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Trace.Warn($"Failed to initialize '{this.Name}' index. Registering the index for re-initialization once connection to SOLR becomes available ...");
+                SolrStatus.RegisterIndexForReinitialization(this);
+                Trace.Warn("DONE");
+                Log.Error(ex.Message, ex, this);
             }
         }
 
@@ -269,7 +280,7 @@
             else
             {
                 this.PropertyStore.Set(SolrIndexProperties.RebuildCollection, RebuildCollection);
-                this.PropertyStore.Set(SolrIndexProperties.ActiveCollection, ActiveCollection);                
+                this.PropertyStore.Set(SolrIndexProperties.ActiveCollection, ActiveCollection);
             }
         }
 
@@ -346,7 +357,7 @@
         protected ResponseHeader CreateAlias(string aliasName, string collection)
         {
             var solrAdmin = SolrContentSearchManager.SolrAdmin as SolrCoreAdmin;
-            var response = new ResponseHeader {Status = -1};
+            var response = new ResponseHeader { Status = -1 };
             if (null != solrAdmin)
             {
                 response = solrAdmin.SendAndParseHeader(new CreateAliasCommand(aliasName, collection));

@@ -6,7 +6,7 @@ namespace Sitecore.Support.ContentSearch.SolrProvider
     using Sitecore.Diagnostics;
     using Administration;
 
-  /// <summary>
+    /// <summary>
     /// Class was added to support SolrSearchIndex that does not block Sitecore application from starting up if Solr connection is not available.
     /// </summary>
     public class SolrSearchIndex : Sitecore.ContentSearch.SolrProvider.SolrSearchIndex
@@ -16,20 +16,24 @@ namespace Sitecore.Support.ContentSearch.SolrProvider
         {
         }
 
+        public SolrSearchIndex(string name, string core, IIndexPropertyStore propertyStore, string group)
+            : base(name, core, propertyStore, group)
+        {
+        }
         public override void Initialize()
         {
-            if (SolrStatus.InitStatusOk)
+            try
             {
-                try
-                {
-                    base.Initialize();
-                    // Use custom SolrFieldNameTranslator from patch 426716
-                    base.FieldNameTranslator = new SolrFieldNameTranslator(this);
-                }
-                catch (Exception exception)
-                {
-                    Log.Error(exception.Message, exception, this);
-                }
+                base.Initialize();
+                // Use custom SolrFieldNameTranslator from patch 426716
+                base.FieldNameTranslator = new SolrFieldNameTranslator(this);
+            }
+            catch (Exception exception)
+            {
+                Trace.Warn($"Failed to initialize '{this.Name}' index. Registering the index for re-initialization once connection to SOLR becomes available ...");
+                SolrStatus.RegisterIndexForReinitialization(this);
+                Trace.Warn("DONE");
+                Log.Error(exception.Message, exception, this);
             }
         }
     }
