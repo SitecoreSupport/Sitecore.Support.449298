@@ -36,16 +36,16 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\SC.Newtonsoft.Json.8.1.1\lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\SC.Newtonsoft.Json.8.1.2\lib\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SC.Sitecore.ContentSearch.8.1.1\lib\Sitecore.ContentSearch.dll</HintPath>
+      <HintPath>..\packages\SC.Sitecore.ContentSearch.8.1.2\lib\Sitecore.ContentSearch.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch.Linq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SC.Sitecore.ContentSearch.Linq.8.1.1\lib\Sitecore.ContentSearch.Linq.dll</HintPath>
+      <HintPath>..\packages\SC.Sitecore.ContentSearch.Linq.8.1.2\lib\Sitecore.ContentSearch.Linq.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch.SolrProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -53,7 +53,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SC.Sitecore.Kernel.8.1.1\lib\Sitecore.Kernel.dll</HintPath>
+      <HintPath>..\packages\SC.Sitecore.Kernel.8.1.2\lib\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="SolrNet, Version=0.4.0.2002, Culture=neutral, processorArchitecture=MSIL">
@@ -85,16 +85,18 @@
     <Compile Include="ContentSearch\SolrProvider\SwitchOnRebuildSolrSearchIndex.cs" />
     <Compile Include="IsSolrAliveAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trace.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.config">
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example">
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.SolrSearchIndex.config.example" />
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.example">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="App_Config\Include\Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example">
+    <None Include="App_Config\Include\z.Sitecore.Support.449298\Sitecore.Support.449298.SwitchOnRebuild.IndexConfig.ReuseCollection.config.example">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
