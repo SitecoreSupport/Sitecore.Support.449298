@@ -1,8 +1,6 @@
 # Sitecore.Support.449298
 Out of the box Solr integration for Sitecore 7.x, 8.0 and 8.1 supports Solr 4.x and does not work with SolrCloud that was introduced in Solr 4.10.x versions and was fully implemented in Solr 5.x. 
 
-[![Total downloads](https://img.shields.io/github/downloads/SitecoreSupport/Sitecore.Support.449298/total.svg)](https://github.com/SitecoreSupport/Sitecore.Support.449298/releases)
-
 ## Disclaimer
 This patch is not an official Sitecore solution to integration with SolrCloud but rather an experimental work that aims to fill in the gap while an official solution is built.
 
@@ -58,3 +56,5 @@ This patch is licensed under the [Sitecore Corporation A/S License](LICENSE).
 ## Download
 
 Downloads are available via [GitHub Releases](https://github.com/SitecoreSupport/Sitecore.Support.449298/releases).
+
+[![Total downloads](https://img.shields.io/github/downloads/SitecoreSupport/Sitecore.Support.449298/total.svg)](https://github.com/SitecoreSupport/Sitecore.Support.449298/releases)
